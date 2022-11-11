@@ -29,7 +29,7 @@ script.
   function firstFunc() {
   document.getElementById("hackBtn").innerHTML = "No hack";
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://sigurnost-web.onrender.com/private");
+  xhr.open("POST", "http://localhost:4080/private");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
@@ -42,7 +42,7 @@ script.
   function secondFunc() {
   document.getElementById("hackBtn").innerHTML = "Hack";
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://sigurnost-web.onrender.com/private");
+  xhr.open("POST", "http://localhost:4080/private");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function () {
   if (xhr.readyState === 4) {
