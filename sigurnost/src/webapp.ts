@@ -81,6 +81,10 @@ app.get('/clubs', function (req, res){
   });
 })
 
+app.get('/admin', auth.requiresAuthentication, function (req, res) {
+  res.render('admin', { user: req.user })
+})
+
 
 app.post('/private', function (req : any, res){
   hack = req.body.hack;
