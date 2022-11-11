@@ -1,6 +1,5 @@
 import * as auth from './middleware';
 import express from 'express';
-import fs from 'fs';
 import path from 'path';
 import http from 'http';
 import { Pool } from 'pg';
