@@ -1,9 +1,56 @@
 html 
     head 
-        title OAuth2/OpenID login demo
+        title Sigurnost Weba
     body
-        h1 This page is only for logged users
-        h4 Your data is: #{user}        
-        a(href='/', title='Home') Home        
-        
+        h1 Hi #{user.username}
+        a(href='/', title='Home') Home 
+        br
+        button#hackBtn(onclick='changeHack()') Hack
+        br
+        p Ako je kliknut "Hack", gumb Top 3 clubs! će dohvatiti sve jer je dodana tautologija. Inače top 3. Hacker dobiva doznanje o svim klubovima (povjerljiva info)
+        br
+        form(action ="/clubs", method="get")
+            button(type="submit") Top 3 clubs! 
+        br  
+
+script.
+    let check = true;
+  function changeHack() {
+  if (check === true) {
+  check = false;
+  firstFunc();
+  }
+  else {
+  check = true;
+  secondFunc();
+  }
+  }
+
+  function firstFunc() {
+  document.getElementById("hackBtn").innerHTML = "No hack";
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:4080/private");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+  console.log(xhr.status);
+  console.log(xhr.responseText);
+  }};
+  xhr.send(JSON.stringify({"hack": "OR 1=1"}));
+  }
+
+  function secondFunc() {
+  document.getElementById("hackBtn").innerHTML = "Hack";
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:4080/private");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+  console.log(xhr.status);
+  console.log(xhr.responseText);
+  }};
+  xhr.send(JSON.stringify({"hack" : ""}));
+  }
+
+  
         

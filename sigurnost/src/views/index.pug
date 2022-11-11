@@ -1,29 +1,9 @@
 html 
     head 
-        title OAuth2/OpenID login demo
+        title Sigurnost weba
     body
-        if username
-            h1 Welcome #{username}  
+        if user
+            h1 Welcome #{user.username}  
         ul 
             li: a(href='/', title='Home') Home
-            li: a(href='/private') Private content             
-            if username
-                li: form(action="/logout", method="get")
-                    input(type="submit", value="Logout " + username)
-            else
-                li: a(href='/sign-up', title='Sign up') Sign up
-            button(onclick='getClubs()') Update
-        table(style='width:50%', border='5')
-            tr
-                th  
-                th Klub
-                th Bodovi 
-                th Gol razlika
-            if clubs != undefined
-                each c, index in clubs
-                    tr
-                        td= index+1
-                        td= c
-                        td= 23
-                        td= 5
-        
+            li: a(href='/private') Private content 
